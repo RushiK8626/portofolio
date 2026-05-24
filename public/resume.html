@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rushikesh Kadepurkar — Resume</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --accent: #1a1a2e;
+      --accent2: #16213e;
+      --ink: #1c1c1e;
+      --ink2: #3a3a3c;
+      --ink3: #636366;
+      --rule: #d1d1d6;
+      --surface: #f5f5f0;
+      --tag-bg: #e8e8f0;
+      --tag-color: #1a1a2e;
+      --link: #0057b8;
+      --highlight: #c8a951;
+      --page: #fafaf7;
+    }
+
+    html {
+      background: var(--surface);
+      font-family: 'DM Sans', sans-serif;
+      color: var(--ink);
+      font-size: 1.0rem;
+    }
+
+    /* Keep a comfortable width on screen; print rules below set exact A4 sizes */
+    body {
+      max-width: 860px;
+      margin: 2.5rem auto;
+      background: var(--page);
+      box-shadow: 0 4px 40px rgba(0, 0, 0, 0.10);
+      border: 1px solid var(--rule);
+      font-size: 1.0rem;
+    }
+
+    @page {
+      size: A4;
+      margin: 12mm;
+    }
+
+    /* ── HEADER ── */
+    .header {
+      padding: 2.4rem 3.5rem 1.8rem;
+      border-bottom: 2px solid var(--ink);
+      position: relative;
+      background: var(--page);
+    }
+
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .name-block h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.4rem;
+      line-height: 1.05;
+      letter-spacing: -0.5px;
+      color: var(--ink);
+      margin-bottom: 0.35rem;
+    }
+
+    .name-block .title {
+      font-size: 0.88rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink3);
+    }
+
+    .contact-block {
+      text-align: right;
+      flex-shrink: 0;
+      padding-top: 0.25rem;
+    }
+
+    .photo {
+      width: 36mm;
+      height: 36mm;
+      object-fit: cover;
+      border-radius: 4px;
+      border: 1px solid var(--rule);
+      flex-shrink: 0;
+      background: #fff;
+    }
+
+    .contact-block a,
+    .contact-block span {
+      display: block;
+      font-size: 0.76rem;
+      color: var(--ink2);
+      text-decoration: none;
+      line-height: 1.8;
+    }
+
+    .contact-block a:hover {
+      color: var(--link);
+      text-decoration: underline;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      margin-top: 0.5rem;
+      align-items: flex-end;
+    }
+
+    .contact-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.73rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1.5px solid var(--ink);
+      padding-bottom: 1px;
+      transition: color 0.15s, border-color 0.15s;
+    }
+
+    .contact-links a:hover {
+      color: var(--link);
+      border-color: var(--link);
+    }
+
+    /* ── BODY ── */
+    .body {
+      padding: 0 3.5rem 3rem;
+    }
+
+    /* ── SUMMARY ── */
+    .summary {
+      padding: 1.8rem 0 1.8rem;
+      border-bottom: 1px solid var(--rule);
+      font-size: 0.88rem; 
+      line-height: 1.75;
+      color: var(--ink2);
+      font-style: italic;
+      font-family: 'DM Serif Display', serif;
+      font-weight: 400;
+    }
+
+    /* ── SECTION ── */
+    .section {
+      margin-top: 2rem;
+    }
+
+    .section-title {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--ink3);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--rule);
+    }
+
+    /* ── SKILLS ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.6rem 2rem;
+    }
+
+    .skill-row {
+      display: flex;
+      gap: 0.5rem;
+      align-items: baseline;
+      font-size: 0.85rem;
+      line-height: 1.5;
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 0.5rem;
+    }
+
+    .skill-label {
+      font-weight: 600;
+      color: var(--ink2);
+      white-space: nowrap;
+      min-width: 100px;
+      flex-shrink: 0;
+      font-size: 0.78rem;
+      letter-spacing: 0.01em;
+    }
+
+    .skill-value {
+      color: var(--ink3);
+      font-size: 0.82rem;
+    }
+
+    /* ── EXPERIENCE / PROJECT ENTRIES ── */
+    .entry {
+      padding: 1.25rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .entry:last-child {
+      border-bottom: none;
+    }
+
+    .entry-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .entry-title {
+      font-size: 0.97rem;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.3;
+    }
+
+    .entry-title .project-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.05rem;
+      font-style: italic;
+    }
+
+    .entry-subtitle {
+      font-size: 0.82rem;
+      color: var(--ink3);
+      margin-top: 0.15rem;
+      font-style: italic;
+    }
+
+    .entry-date {
+      font-size: 0.77rem;
+      color: var(--ink3);
+      white-space: nowrap;
+      font-family: 'JetBrains Mono', monospace;
+      flex-shrink: 0;
+      margin-top: 2px;
+      background: var(--tag-bg);
+      padding: 2px 8px;
+      border-radius: 3px;
+    }
+
+    .entry-desc {
+      font-size: 0.85rem;
+      color: var(--ink2);
+      line-height: 1.7;
+      margin-top: 0.5rem;
+      margin-bottom: 0.6rem;
+    }
+
+    /* ── FEATURE BULLETS ── */
+    .feature-list {
+      margin-top: 0.7rem;
+      padding-left: 1.1rem;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.35rem 1.5rem;
+    }
+
+    .feature-list li {
+      font-size: 0.8rem;
+      color: var(--ink2);
+      line-height: 1.45;
+      padding-left: 0.15rem;
+    }
+
+    .feature-list li::marker {
+      color: var(--accent2);
+    }
+
+    .feature-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem 0.8rem;
+      margin-top: 0.7rem;
+    }
+
+    .feature-tags .tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      line-height: 1.2;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      color: var(--ink2);
+      background: transparent;
+      border: none;
+      padding: 0;
+      white-space: nowrap;
+    }
+
+    .project-tech {
+      font-size: 0.76rem;
+      color: var(--link);
+      font-family: 'JetBrains Mono', monospace;
+      margin-top: 0.25rem;
+      font-weight: 500;
+    }
+
+    /* ── PROJECT LINKS ── */
+    .project-links {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: 0.75rem;
+      align-items: center;
+    }
+
+    .btn-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.76rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 5px 12px;
+      border-radius: 4px;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .btn-github {
+      background: var(--ink);
+      color: #fff;
+    }
+
+    .btn-github:hover {
+      background: var(--accent2);
+    }
+
+    .btn-live {
+      background: transparent;
+      color: var(--ink);
+      border: 1.5px solid var(--rule);
+    }
+
+    .btn-live:hover {
+      border-color: var(--ink);
+      background: var(--tag-bg);
+    }
+
+    /* ── EDUCATION ── */
+    .edu-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 0.8rem 0;
+    }
+
+    .edu-degree {
+      font-size: 0.97rem;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .edu-school {
+      font-size: 0.84rem;
+      color: var(--ink3);
+      margin-top: 0.2rem;
+      font-style: italic;
+    }
+
+    .edu-meta {
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    .edu-meta .gpa {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--ink);
+    }
+
+    .edu-meta .year {
+      font-size: 0.78rem;
+      color: var(--ink3);
+      margin-top: 0.15rem;
+    }
+
+    /* ── LANGS + CERTS ── */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.6rem;
+    }
+
+    .pill {
+      font-size: 0.8rem;
+      color: var(--ink2);
+      background: var(--tag-bg);
+      padding: 4px 12px;
+      border-radius: 30px;
+      font-weight: 500;
+    }
+
+    .cert-item {
+      font-size: 0.83rem;
+      color: var(--ink2);
+      line-height: 1.6;
+      margin-top: 0.5rem;
+    }
+
+    .cert-item .cert-name {
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      border-top: 2px solid var(--ink);
+      padding: 1rem 3.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-note {
+      font-size: 0.72rem;
+      color: var(--ink3);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* ── PRINT ── */
+    @media print {
+
+      html,
+      body {
+        background: white;
+      }
+
+      body {
+        width: 210mm;
+        min-height: 297mm;
+        margin: 0 auto;
+        box-shadow: none;
+        border: none;
+        background: white;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      @page {
+        size: A4;
+        margin: 10mm 12mm;
+      }
+
+      /* Hide buttons in PDF */
+      .btn-link,
+      .project-links {
+        display: none;
+      }
+
+      /* Allow sections to split naturally */
+      .section {
+        break-inside: auto;
+        page-break-inside: auto;
+      }
+
+      /* Keep individual entries together */
+      .entry {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      /* Avoid splitting headers/tags awkwardly */
+      .entry-header,
+      .feature-tags,
+      .edu-row {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      /* Prevent random forced page breaks */
+      h2,
+      h3,
+      p {
+        page-break-after: avoid;
+      }
+
+      /* Slightly reduce spacing for better fit */
+      .section {
+        margin-top: 1.4rem;
+      }
+
+      .entry {
+        padding: 0.9rem 0;
+      }
+
+      .summary {
+        padding: 1.2rem 0;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .header {
+        padding: 2rem 1.5rem 1.75rem;
+      }
+
+      .body {
+        padding: 0 1.5rem 2rem;
+      }
+
+      .footer {
+        padding: 1rem 1.5rem;
+      }
+
+      .header-inner {
+        flex-direction: column;
+      }
+
+      .contact-block {
+        text-align: left;
+      }
+
+      .contact-links {
+        justify-content: flex-start;
+      }
+
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .two-col {
+        grid-template-columns: 1fr;
+      }
+
+      .edu-row {
+        flex-direction: column;
+      }
+
+      .edu-meta {
+        text-align: left;
+      }
+
+      .feature-list {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ═══ HEADER ═══ -->
+  <header class="header">
+    <div class="header-inner">
+      <img class="photo" src="hero.png" alt="Photo of Rushikesh">
+      <div class="name-block">
+        <h1>Rushikesh<br>Kadepurkar</h1>
+        <p class="title">Computer Science Undergraduate&nbsp;COEP Tech, Pune</p>
+      </div>
+      <div class="contact-block">
+        <span>Pune, India 411005</span>
+        <a href="tel:+919356866093" target="_blank">+91 93568 66093</a>
+        <a href="mailto:rushikeshk2005@gmail.com" target="_blank">rushikeshk2005@gmail.com</a>
+        <a href="mailto:kadepurkarrs23.comp@coeptech.ac.in" target="_blank">kadepurkarrs23.comp@coeptech.ac.in</a>
+        <div class="contact-links">
+          <a href="https://github.com/Rushik8626" target="_blank">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path
+                d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
+            </svg>
+            GitHub
+          </a>
+          <a href="https://www.linkedin.com/in/rushikesh-kadepurkar-9a9006292" target="_blank">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path
+                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+            </svg>
+            linkedin
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="body">
+
+    <!-- ═══ SUMMARY ═══ -->
+    <p class="summary">
+      Third-year CSE undergraduate at COEP Technological University with strong expertise in systems programming,
+      full-stack web development, and artificial intelligence. Experienced in building end-to-end software solutions
+      from low-level C/C++ algorithms to containerized web applications, with hands-on proficiency in AI/ML
+      and deep learning. Seeking challenging engineering roles to drive innovation and create measurable impact.
+    </p>
+
+    <!-- ═══ SKILLS ═══ -->
+    <section class="section">
+      <h2 class="section-title">Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-row">
+          <span class="skill-label">Languages</span>
+          <span class="skill-value">C, C++, Python, JavaScript, Java, HTML, CSS</span>
+        </div>
+        <div class="skill-row">
+          <span class="skill-label">Web / Backend</span>
+          <span class="skill-value">React.js, Node.js, Express.js, Next.js, REST APIs, WebSockets</span>
+        </div>
+        <div class="skill-row">
+          <span class="skill-label">Databases & Infra</span>
+          <span class="skill-value">MySQL, MongoDB, Redis, Prisma</span>
+        </div>
+        <div class="skill-row">
+          <span class="skill-label">AI / ML</span>
+          <span class="skill-value">NLP, ML, LLMs, RAG, Agentic AI</span>
+        </div>
+        <div class="skill-row">
+          <span class="skill-label">Tools</span>
+          <span class="skill-value">Git, Docker</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ EXPERIENCE ═══ -->
+    <section class="section">
+      <h2 class="section-title">Experience</h2>
+
+      <div class="entry">
+        <div class="entry-header">
+          <div>
+            <p class="entry-title">Summer Intern</p>
+            <p class="entry-subtitle">Indian Institute of Technology, Jammu</p>
+          </div>
+          <span class="entry-date">Jun – Aug 2025</span>
+        </div>
+        <p class="entry-desc">
+          Designed and fine-tuned intelligent agents and AI automation workflows. Built and deployed scalable LLM-based
+          solutions for real-world applications, focusing on performance optimization.
+        </p>
+        <div class="feature-tags">
+          <span class="tag">LLMs</span>
+          <span class="tag">Agentic AI</span>
+          <span class="tag">Fine-tuning</span>
+          <span class="tag">AI Automation</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ PROJECTS ═══ -->
+    <section class="section">
+      <h2 class="section-title">Academic Projects</h2>
+
+      <!-- SwiftTalk -->
+      <div class="entry">
+        <div class="entry-header">
+          <div>
+            <p class="entry-title"><span class="project-name">SwiftTalk</span> — Real-Time Chat Messaging Platform
+            </p>
+            <p class="project-tech">React · Node.js · Express.js · Socket.IO · MySQL · Prisma · Redis · JWT · Docker · Langchain</p>
+          </div>
+          <span class="entry-date">Sep 2025 – Present</span>
+        </div>
+        <p class="entry-desc">
+          A full-stack real-time messaging platform featuring instant messaging, AI-powered smart replies, task
+          management, file sharing, push notifications, JWT authentication, and group conversations.
+        </p>
+        <ul class="feature-list">
+          <li>Real-Time Messaging</li>
+          <li>JWT + OTP Authentication</li>
+          <li>WebSocket Communication</li>
+          <li>Redis Caching</li>
+          <li>AI Smart Replies and summaries</li>
+          <li>Langchain powered AI chatbot integration</li>
+          <li>Task Management</li>
+          <li>Push Notifications</li>
+          <li>File Sharing</li>
+          <li>Docker Compose</li>
+        </ul>
+        <div class="project-links">
+          <a href="https://github.com/RushiK8626/SwiftTalk-Chat-Messaging-App" class="btn-link btn-github"
+            target="_blank">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path
+                d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
+            </svg>
+            github.com/RushiK8626
+          </a>
+          <a href="https://swiftalk.vercel.app" class="btn-link btn-live" target="_blank">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              aria-hidden="true">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+              <polyline points="15 3 21 3 21 9" />
+              <line x1="10" y1="14" x2="21" y2="3" />
+            </svg>
+            Live Demo
+          </a>
+        </div>
+      </div>
+
+      <!-- NAT Traversal -->
+      <div class="entry">
+        <div class="entry-header">
+          <div>
+            <p class="entry-title"><span class="project-name">NAT Traversal</span> — UDP Hole Punching over QUIC
+            </p>
+            <p class="project-tech">Python · aioquic · UDP · Socket Programming · Computer Networking · Docker</p>
+          </div>
+          <span class="entry-date">Mar – Apr 2026</span>
+        </div>
+        <p class="entry-desc">
+          A peer-to-peer networking project implementing NAT traversal using UDP hole punching over QUIC to establish
+          low-latency direct communication between clients behind network address translation.
+        </p>
+        <ul class="feature-list">
+          <li>NAT Classification</li>
+          <li>UDP Hole Punching</li>
+          <li>QUIC / aioquic</li>
+          <li>0-RTT Session Resumption</li>
+          <li>WebSocket Relay Fallback</li>
+          <li>TLS 1.3 Authentication</li>
+          <li>Live Metrics Dashboard</li>
+        </ul>
+        <div class="project-links">
+          <a href="https://github.com/RushiK8626/nat-traversal-udp-hole-punching-over-quic" class="btn-link btn-github"
+            target="_blank">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path
+                d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
+            </svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+
+      <!-- File Compression -->
+      <div class="entry">
+        <div class="entry-header">
+          <div>
+            <p class="entry-title"><span class="project-name">File Compression using Huffman Coding</span></p>
+            <p class="project-tech">C++ · Data Structures · Algorithms · Huffman Coding · Priority Queues</p>
+          </div>
+          <span class="entry-date">Sep &ndash; Oct 2024</span>
+        </div>
+        <p class="entry-desc">
+          A lossless file compression utility implementing Huffman coding with binary tree algorithms for efficient
+          file encoding and decoding.
+        </p>
+        <ul class="feature-list">
+          <li>BWT &amp; MTF Encoding</li>
+          <li>Huffman Compression</li>
+          <li>Lossless Decompression</li>
+          <li>Modular C++ Codebase</li>
+          <li>WebAssembly Integration</li>
+          <li>React-based Frontend</li>
+          <li>~80% Compression Ratio</li>
+        </ul>
+        <div class="project-links">
+          <a href="https://github.com/RushiK8626/File-Compression-using-Huffman-Coding" class="btn-link btn-github"
+            target="_blank">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path
+                d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
+            </svg>
+            GitHub
+          </a>
+          <a href="https://compressify-wasm.vercel.app" class="btn-link btn-live" target="_blank">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              aria-hidden="true">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+              <polyline points="15 3 21 3 21 9" />
+              <line x1="10" y1="14" x2="21" y2="3" />
+            </svg>
+            Live Demo
+          </a>
+        </div>
+      </div>
+
+      <!-- Chess Game -->
+      <div class="entry">
+        <div class="entry-header">
+          <div>
+            <p class="entry-title"><span class="project-name">Raylib Chess Game</span></p>
+            <p class="project-tech">C++ · Raylib · Game Development · Graphics Programming</p>
+          </div>
+          <span class="entry-date">Dec 2024</span>
+        </div>
+        <p class="entry-desc">
+          A desktop chess game built with Raylib featuring custom graphics, move validation, chess piece logic,
+          and interactive gameplay interface.
+        </p>
+        <ul class="feature-list">
+          <li>Human vs Human Mode</li>
+          <li>Human vs Stockfish Engine</li>
+          <li>Chess Rules Enforcement</li>
+          <li>Move Validation System</li>
+          <li>FEN &amp; Algebraic Parsing</li>
+          <li>Sound Effects &amp; Custom Fonts</li>
+        </ul>
+        <div class="project-links">
+          <a href="https://github.com/RushiK8626/Raylib-Chess-Game" class="btn-link btn-github" target="_blank">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path
+                d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
+            </svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ EDUCATION ═══ -->
+    <section class="section">
+      <h2 class="section-title">Education</h2>
+      <div class="edu-row">
+        <div>
+          <p class="edu-degree">B.Tech — Computer Science and Engineering</p>
+          <p class="edu-school">COEP Technological University · Pune, Maharashtra</p>
+        </div>
+        <div class="edu-meta">
+          <p class="gpa">7.83 / 10.0</p>
+          <p class="year">Expected 2027</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ LANGUAGES + CERTIFICATIONS ═══ -->
+    <div class="two-col">
+      <section class="section" style="margin-top: 0;">
+        <h2 class="section-title">Languages</h2>
+        <div class="pill-list">
+          <span class="pill">English — Fluent</span>
+          <span class="pill">Hindi — Fluent</span>
+          <span class="pill">Marathi — Native</span>
+        </div>
+      </section>
+
+      <section class="section" style="margin-top: 0;">
+        <h2 class="section-title">Certifications</h2>
+        <div class="cert-item">
+          <span class="cert-name">Intermediate to Advanced Python</span><br>
+          Udemy &nbsp;·&nbsp; 2024
+        </div>
+      </section>
+    </div>
+
+  </main>
+</body>
+
+</html>
