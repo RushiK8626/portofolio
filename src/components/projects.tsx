@@ -58,7 +58,7 @@ const projects = [
         tech: ['HTML', 'CSS', 'JavaScript', 'Algorithms', 'Visualization'],
         description:
             'An interactive web-based simulator for visualizing search algorithms and comparing their traversal behavior, efficiency, and execution flow.',
-        demo: null,
+        demo: 'https://search-simulator.vercel.app/',
         image: "/projects/search-simulator.png",
     },
 ];
