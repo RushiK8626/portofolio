@@ -43,7 +43,7 @@ function SectionWrapper({ children, variant = 'hero' }) {
       initial={preset.initial}
       whileInView={preset.whileInView}
       transition={preset.transition}
-      viewport={{ once: false, amount: 0.2 }}
+      viewport={{ once: true, amount: 0.05 }}
       style={{ width: '100%', height: '100%' }}
     >
       {children}

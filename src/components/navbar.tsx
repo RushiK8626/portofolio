@@ -31,8 +31,8 @@ function Navbar() {
 
         {/* Navigation Menu */}
         <div className={`flex items-center gap-6 max-md:flex-col max-md:gap-0 max-md:absolute max-md:top-full max-md:left-0 max-md:right-0 max-md:bg-surface/95 max-md:backdrop-blur-md max-md:border-b max-md:border-border max-md:overflow-hidden max-md:transition-[max-height,visibility,opacity,padding] max-md:duration-300 ${isMenuOpen ? 'max-md:max-h-[80vh] max-md:visible max-md:opacity-100 max-md:py-4 max-md:px-4' : 'max-md:max-h-0 max-md:invisible max-md:opacity-0 max-md:py-0 max-md:px-4'}`}>
-          {['#home', '#about', '#projects', '#skills', '#resume', '#contact'].map((href, i) => {
-            const labels = ['Home', 'About', 'Projects', 'Skills', 'Resume', 'Contact'];
+          {['#home', '#about', '#skills', '#projects', '#resume', '#contact'].map((href, i) => {
+            const labels = ['Home', 'About', 'Skills', 'Projects', 'Resume', 'Contact'];
             return (
               <Link
                 key={href}

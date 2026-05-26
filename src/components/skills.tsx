@@ -3,7 +3,8 @@ import React from 'react';
 import type { IconType } from 'react-icons';
 import { motion } from 'framer-motion';
 import { FaReact, FaNodeJs, FaPython, FaJava, FaGitAlt } from 'react-icons/fa';
-import { SiNextdotjs, SiExpress, SiMongodb, SiMysql, SiDocker, SiRedis, SiPrisma, SiJavascript, SiC, SiCplusplus, SiHuggingface, SiTensorflow, SiOpenai, SiLangchain, SiLanggraph, SiCrewai } from 'react-icons/si';
+import { SiNextdotjs, SiExpress, SiMongodb, SiMysql, SiDocker, SiRedis, SiPrisma, SiJavascript, SiTypescript, SiC, SiCplusplus, SiHuggingface, SiTensorflow, SiOpenai, SiLangchain, SiCrewai } from 'react-icons/si';
+import dynamic from 'next/dynamic';
 
 const skillGroups = [
   {
@@ -13,6 +14,7 @@ const skillGroups = [
       { name: 'C++', icon: SiCplusplus, color: '#00599C' },
       { name: 'Python', icon: FaPython, color: '#3776AB' },
       { name: 'JavaScript', icon: SiJavascript, color: '#F7DF1E' },
+      { name: 'TypeScript', icon: SiTypescript, color: '#007acc' },
       { name: 'Java', icon: FaJava, color: '#ED8B00' },
     ],
   },
@@ -21,8 +23,17 @@ const skillGroups = [
     items: [
       { name: 'React.js', icon: FaReact, color: '#61DAFB' },
       { name: 'Node.js', icon: FaNodeJs, color: '#339933' },
-      { name: 'Express.js', icon: SiExpress, color: '#ffffff' },
-      { name: 'Next.js', icon: SiNextdotjs, color: '#ffffff' },
+      { name: 'Express.js', icon: SiExpress, dynamic: true },
+      { name: 'Next.js', icon: SiNextdotjs, dynamic: true },
+    ],
+  },
+  {
+    label: 'Artificial Intelligence',
+    items: [
+      { name: 'NLP', icon: SiHuggingface, color: '#FFD21E' },
+      { name: 'ML', icon: SiTensorflow, color: '#FF6F00' },
+      { name: 'LLMs', icon: SiOpenai, dynamic: true },
+      { name: 'RAG', icon: SiLangchain, color: '#1C3C3C' },
     ],
   },
   {
@@ -36,133 +47,117 @@ const skillGroups = [
       { name: 'Git', icon: FaGitAlt, color: '#F05032' },
     ],
   },
-  {
-    label: 'Artificial Intelligence',
-    items: [
-      { name: 'NLP', icon: SiHuggingface, color: '#FFD21E' },
-      { name: 'ML', icon: SiTensorflow, color: '#FF6F00' },
-      { name: 'LLMs', icon: SiOpenai, color: '#ffffff' },
-      { name: 'RAG', icon: SiLangchain, color: '#1C3C3C' },
-      { name: 'Agentic AI', icon: SiCrewai, color: '#FF5A50' },
-    ],
-  },
 ];
 
-const containerVariants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.1,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] as const },
-  },
-};
-
-const groupVariants = {
-  hidden: { opacity: 0, y: 20, scale: 0.97 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] as const },
-  },
-};
-
-const SkillBadge = ({ item }: { item: { name: string; icon: IconType; color: string } }) => {
-  const [hovered, setHovered] = React.useState(false);
+const SkillCard = ({ item }: { item: { name: string; icon: IconType; color?: string, dynamic?: boolean } }) => {
   const Icon = item.icon;
-
   return (
-    <span
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      className="inline-flex items-center gap-1.5 rounded-full border border-border bg-surface-alt px-[0.9rem] py-[0.55rem] text-sm font-medium text-text transition-all duration-200 hover:border-primary"
+    <div
+      className="group/skill flex min-h-[130px] flex-col items-center justify-center gap-3 rounded-2xl border border-border/50 bg-surface-alt/30 p-4 transition-all duration-300 hover:-translate-y-1 hover:border-border hover:bg-surface-alt hover:shadow-sm"
     >
-      <Icon
-        className="text-base transition-colors duration-200"
-        style={{ color: hovered ? item.color : 'currentColor' }}
-      />
-      <span>{item.name}</span>
-    </span>
+      <div
+        className="flex h-12 w-12 items-center justify-center rounded-xl bg-surface shadow-sm transition-transform duration-300 group-hover/skill:scale-110 group-hover/skill:shadow-md"
+      >
+        <Icon
+          className={`text-3xl transition-all duration-300 opacity-80 group-hover/skill:opacity-100 ${item.dynamic ? 'text-heading' : ''}`}
+          style={!item.dynamic ? { color: item.color } : undefined}
+        />
+      </div>
+      <span className="text-center text-xs font-semibold text-text-muted transition-colors duration-300 group-hover/skill:text-text">
+        {item.name}
+      </span>
+    </div>
   );
-}
+};
 
 function Skills() {
   return (
-    <section
-      id="skills"
-      className="pt-0"
-    >
-      <div className="page-wrap">
-        <div className="mt-8 rounded-lg bg-gradient-to-b from-surface to-surface-alt p-6 shadow-md">
-          <div className="grid items-start gap-8 md:grid-cols-[minmax(260px,360px)_minmax(0,1fr)]">
-            {/* LEFT SIDE */}
-            <motion.div
-              className="min-w-0"
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: false, amount: 0.3 }}
-            >
-              <motion.p
-                className="mb-2 text-sm font-semibold uppercase tracking-[0.12em] text-primary"
-                variants={itemVariants}
-              >
-                Skills
-              </motion.p>
+    <section id="skills" className="relative py-24 overflow-hidden">
+      {/* Background glow effects */}
+      <div className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[800px] w-[1000px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/5 blur-[120px]" />
 
-              <motion.h2
-                className="mb-3 text-4xl font-bold"
-                variants={itemVariants}
-              >
-                What I work with
-              </motion.h2>
+      <div className="page-wrap relative">
+        <div className="mb-16 text-center">
+          <motion.p
+            className="mb-3 text-sm font-bold uppercase tracking-[0.2em] text-primary"
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+          >
+            Expertise
+          </motion.p>
+          <motion.h2
+            className="mb-4 text-4xl font-extrabold md:text-5xl"
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ delay: 0.1 }}
+          >
+            My Tech Stack
+          </motion.h2>
+          <motion.p
+            className="mx-auto max-w-2xl text-lg text-text-muted"
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ delay: 0.2 }}
+          >
+            I leverage a diverse set of modern technologies to build scalable,
+            high-performance applications and intelligent AI solutions.
+          </motion.p>
+        </div>
 
-              <motion.p
-                className="max-w-[32rem] text-lg text-text-muted"
-                variants={itemVariants}
-              >
-                I build with a focused stack across software fundamentals,
-                full-stack web development, infrastructure, and AI.
-              </motion.p>
-            </motion.div>
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-5">
+          {skillGroups.map((group, idx) => {
+            let colSpanClasses = '';
+            let gridColsClasses = '';
 
-            {/* RIGHT SIDE */}
-            <motion.div
-              className="grid gap-5 md:grid-cols-2"
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: false, amount: 0.2 }}
-            >
-              {skillGroups.map((group) => (
-                <motion.div
-                  key={group.label}
-                  variants={groupVariants}
-                  className="rounded-lg border border-border bg-surface/90 p-5 transition-all duration-200 hover:-translate-y-[3px] hover:border-primary hover:shadow-md"
-                >
-                  <h3 className="mb-3 text-lg font-semibold">
+            if (idx === 0) {
+              // Programming Languages
+              colSpanClasses = 'md:col-span-1 lg:col-span-3';
+              gridColsClasses = 'grid-cols-2 sm:grid-cols-3';
+            } else if (idx === 1) {
+              // Web / Backend
+              colSpanClasses = 'md:col-span-1 lg:col-span-2';
+              gridColsClasses = 'grid-cols-2 lg:grid-cols-2';
+            } else if (idx === 2) {
+              // Artificial Intelligence
+              colSpanClasses = 'md:col-span-1 lg:col-span-2';
+              gridColsClasses = 'grid-cols-2 lg:grid-cols-2';
+            } else if (idx === 3) {
+              // Databases & Infra
+              colSpanClasses = 'md:col-span-1 lg:col-span-3';
+              gridColsClasses = 'grid-cols-2 sm:grid-cols-3';
+            }
+
+            return (
+              <motion.div
+                key={group.label}
+                className={`group flex flex-col relative overflow-hidden rounded-3xl border border-border bg-surface/80 p-8 shadow-sm backdrop-blur-md transition-all duration-300 hover:border-primary/40 hover:shadow-glow ${colSpanClasses}`}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ delay: idx * 0.1 }}
+              >
+                {/* Subtle hover gradient background */}
+                <div className="pointer-events-none absolute -inset-px rounded-3xl bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+
+                <div className="relative z-10 flex h-full flex-col">
+                  <h3 className="mb-6 text-xl font-bold tracking-tight text-heading">
                     {group.label}
                   </h3>
 
-                  <div className="flex flex-wrap gap-2">
-                    {group.items.map((item) => {
-                      return <SkillBadge key={item.name} item={item} />
-                    })}
+                  <div className="flex flex-col">
+                    <div className={`grid auto-rows-fr gap-4 ${gridColsClasses}`}>
+                      {group.items.map((item) => (
+                        <SkillCard key={item.name} item={item} />
+                      ))}
+                    </div>
                   </div>
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>

@@ -46,7 +46,7 @@ function App() {
     h-screen
     overflow-y-auto
     snap-y
-    snap-mandatory
+    snap-proximity
     scroll-smooth
     overscroll-none
   "
@@ -69,7 +69,7 @@ function App() {
           </SectionWrapper>
         </section>
 
-        <section className="min-h-screen snap-center flex items-center">
+        <section className="min-h-screen snap-start flex items-start py-16">
           <SectionWrapper variant="projects">
             <Projects />
           </SectionWrapper>
