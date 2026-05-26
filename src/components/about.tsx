@@ -52,8 +52,8 @@ function About() {
             value: 'Building responsive full-stack apps and AI systems and strengthening core engineering skills.',
         },
         {
-            label: 'Technologies',
-            value: 'React, Node.js, JavaScript, Python, and Git.',
+            label: 'Education',
+            value: 'B.Tech Computer Science Engineering — COEP Technological University, Pune (Expected 2027).',
         },
         {
             label: 'Career Goals',
@@ -126,7 +126,7 @@ function About() {
                             </motion.h2>
 
                             <motion.p className="max-w-[760px] text-lg text-text-muted" variants={itemVariants}>
-                                I&apos;m a Computer Engineering student interested in web development, artificial intelligence,
+                                I&apos;m a Computer Science Engineering student at COEP Technological University, Pune — interested in web development, artificial intelligence,
                                 algorithms, systems programming, and solving real-world problems.
                             </motion.p>
 
