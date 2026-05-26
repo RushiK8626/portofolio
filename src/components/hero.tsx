@@ -99,7 +99,7 @@ function Hero() {
               className="text-3xl sm:text-2xl text-primary font-semibold"
               variants={itemVariants}
             >
-              Software Builder & Creative Technologist
+              Software Developer & Creative Technologist
             </motion.p>
 
             {/* Intro */}
