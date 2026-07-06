@@ -67,14 +67,14 @@ function Resume() {
             className="mt-6 flex gap-4 md:flex-col md:items-stretch"
             variants={itemVariants}
           >
-            <Link
-              href="/resume.html"
+            <a
+              href="/resume.pdf"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="bg-primary text-white font-semibold px-8 py-4 rounded-md inline-flex items-center justify-center transition-[background,transform,box-shadow] duration-200 hover:bg-primary-dark hover:-translate-y-[3px] hover:shadow-glow"
             >
               View Resume
-            </Link>
+            </a>
             <Link
               href="/resume.pdf"
               download="Resume.pdf"
